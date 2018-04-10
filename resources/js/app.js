@@ -1,4 +1,3 @@
-var transcript;
 
 function speech() {
   window.SpeechRecognition  = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -8,11 +7,12 @@ function speech() {
   recognition.lang = 'en-US';
 
   recognition.addEventListener('result', e => {
+    var transcript;
     transcript = Array.from(e.results)
     .map(result => result[0])
     .map(result => result.transcript)
     .join('');
-    transcript = encodeURIComponent(transcript);
+
     console.log(transcript);
   });
 
@@ -21,6 +21,3 @@ function speech() {
   recognition.start();
 }
 speech()
-
-// transcript = encodeURIComponent(transcript);
-// console.log(recognition.transcript);
