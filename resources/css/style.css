@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #DAEDE2;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#run{
+    width: 100px;
+    height: 100px;
+    border: none;
+    outline: none;
+    background: #EA2E49;
+    border-radius: 100%;
+    padding: 20px;
+    cursor: pointer;
+}

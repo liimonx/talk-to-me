@@ -20,8 +20,11 @@ const finalData = (data) => {
   console.log(data);
 }
 
+document.getElementById('run').addEventListener("click", ()=>{
+  recognition.start()
+  // recognition.addEventListener('end', recognition.start);
+  
+});
 
 
-recognition.addEventListener('end', recognition.start);
 
-recognition.start();
