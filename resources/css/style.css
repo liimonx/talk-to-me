@@ -23,3 +23,6 @@ body{
     padding: 20px;
     cursor: pointer;
 }
+#run:active{
+    background: #DAEDE2;
+}
