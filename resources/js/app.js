@@ -1,23 +1,27 @@
 
-function speech() {
-  window.SpeechRecognition  = window.SpeechRecognition || window.webkitSpeechRecognition;
+window.SpeechRecognition  = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
-  recognition.lang = 'en-US';
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'en-US';
 
-  recognition.addEventListener('result', e => {
-    var transcript;
-    transcript = Array.from(e.results)
-    .map(result => result[0])
-    .map(result => result.transcript)
-    .join('');
+recognition.addEventListener('result', e => {
+  var transcript;
+  transcript = Array.from(e.results)
+  .map(result => result[0])
+  .map(result => result.transcript)
+  .join('');
+  if(e.results[0].isFinal){
+    finalData(transcript)
+  }
+});
 
-    console.log(transcript);
-  });
-
-  recognition.addEventListener('end', recognition.start);
-
-  recognition.start();
+const finalData = (data) => {
+  console.log(data);
 }
-speech()
+
+
+
+recognition.addEventListener('end', recognition.start);
+
+recognition.start();
