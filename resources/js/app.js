@@ -25,14 +25,29 @@ document.getElementById('run').addEventListener("click", ()=>{
 
 const msg  = new SpeechSynthesisUtterance();
 let voices = [];
-
+speechSynthesis.addEventListener('voiceschanged', populateVoices);
 function populateVoices(){
   voices = this.getVoices();
   msg.voice = voices[5];
 }
 
 const finalData = (data) => {
-  
+  var currentTime = new Date(),
+      hours = currentTime.getHours(),
+        minutes = currentTime.getMinutes();
+    if (minutes < 10) {
+    minutes = "0" + minutes;
+    }
+
+    var suffix = "AM";
+    if (hours >= 12) {
+      suffix = "PM";
+      hours = hours - 12;
+    }
+    if (hours == 0) {
+    hours = 12;
+    }
+  var times = hours + ":," + minutes + " " + suffix
   switch (data) {
     case "what is your name":
       msg.text = "my name is 9";
@@ -43,13 +58,24 @@ const finalData = (data) => {
     case "how are you":
       msg.text = "I am Fine, and you";
       break;
-  
-    default: msg.text = "sorry, I can understand, what you say";
+    case "what is your mother name":
+      msg.text = "I actually have quite a few mothers. Lots of talented women helped bring me to life.";
+      break;
+    case "what is your father name":
+      msg.text = "Technically speaking, that'd be Limon. No big deal.";
+      break;
+    case "what time is now":
+      msg.text = `${times}`;
+      break;
+    default: msg.text = "I'm sorry, I didn't catch than.";
       break;
   }
 
+  
+    
   console.log(data);
-
+  msg.pitch = 1;
   speechSynthesis.speak(msg);
 }
-speechSynthesis.addEventListener('voiceschanged', populateVoices);
+
+
