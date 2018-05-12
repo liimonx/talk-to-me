@@ -28,3 +28,16 @@ document.getElementById('run').addEventListener("click", ()=>{
 
 
 
+const msg  = new SpeechSynthesisUtterance();
+let voices = [];
+
+function populateVoices(){
+  voices = this.getVoices();
+  msg.voice = voices[5];
+  
+}
+msg.text = "This is so cool";
+
+
+
+speechSynthesis.addEventListener('voiceschanged', populateVoices);
