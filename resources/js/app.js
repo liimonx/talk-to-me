@@ -6,7 +6,7 @@ recognition.interimResults = true;
 recognition.lang = 'en-US';
 
 recognition.addEventListener('result', e => {
-  var transcript;
+  let transcript;
   transcript = Array.from(e.results)
   .map(result => result[0])
   .map(result => result.transcript)
@@ -24,22 +24,22 @@ document.getElementById('run').addEventListener("click", ()=>{
 
 
 const msg  = new SpeechSynthesisUtterance();
-let voices = [];
+let voices = [1];
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
 function populateVoices(){
   voices = this.getVoices();
-  msg.voice = voices[5];
+  msg.voice = voices[1];
 }
 
 const finalData = (data) => {
-  var currentTime = new Date(),
+  let currentTime = new Date(),
       hours = currentTime.getHours(),
         minutes = currentTime.getMinutes();
     if (minutes < 10) {
     minutes = "0" + minutes;
     }
 
-    var suffix = "AM";
+    let suffix = "AM";
     if (hours >= 12) {
       suffix = "PM";
       hours = hours - 12;
@@ -47,7 +47,8 @@ const finalData = (data) => {
     if (hours == 0) {
     hours = 12;
     }
-  var times = hours + ":," + minutes + " " + suffix
+    
+  let times = hours + ":," + minutes + " " + suffix
   switch (data) {
     case "what is your name":
       msg.text = "my name is 9";
