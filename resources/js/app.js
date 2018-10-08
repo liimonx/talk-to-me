@@ -24,11 +24,11 @@ document.getElementById('run').addEventListener("click", ()=>{
 
 
 const msg  = new SpeechSynthesisUtterance();
-let voices = [1];
+let voices = [0];
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
 function populateVoices(){
   voices = this.getVoices();
-  msg.voice = voices[1];
+  msg.voice = voices[0];
 }
 
 const finalData = (data) => {
