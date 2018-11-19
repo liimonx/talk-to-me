@@ -24,7 +24,7 @@ document.getElementById('run').addEventListener("click", ()=>{
 
 
 const msg  = new SpeechSynthesisUtterance();
-let voices = [0];
+let voices = [1];
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
 function populateVoices(){
   voices = this.getVoices();
